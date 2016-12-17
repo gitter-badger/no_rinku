@@ -1,0 +1,12 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.alert-recaptcha_error {
+  @extend .alert-warning;
+}
+.alert-alert {
+  @extend .alert-warning;
+}
+.alert-notice {
+  @extend .alert-info;
+}
