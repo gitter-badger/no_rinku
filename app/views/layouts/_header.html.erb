@@ -1,0 +1,18 @@
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <%= link_to "no rinku", root_path, class: "navbar-brand" %>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "FAQ", faq_url %></li>
+        <% if user_signed_in? %>
+          <li><a href="#">My account</a></li>
+        <% else %>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Sign in", new_user_session_path %></a></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

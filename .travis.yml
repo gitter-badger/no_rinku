@@ -1,0 +1,32 @@
+dist: trusty
+sudo: required
+language: ruby
+rvm:
+- 2.3.1
+matrix:
+- DB: postgresql
+before_script:
+- psql -c "create database norinku_test" -U postgres
+- RAILS_ENV=test bundle exec rake db:migrate
+script:
+- bundle exec rake
+services:
+- postgresql
+addons:
+  postgresql: '9.6'
+deploy:
+  provider: heroku
+  api_key:
+    secure: J3BXi/5jIOow45Iy8dH8dVwEQPJZsKzojjdgGVFZOVgTEW8LHCOh1V+1x8wOfjwrUAFeh1KqZNrfnLdPY2Xs5CWec6RJNvnDeTdWeDpTOdcRWJ7FdDV6OgaXpUhp8vewNX/QzrJah0J95+I3a6wHu2j05++FjsMfQ4G+6Hw7pPLR6qV0C7ropavbBShhU5d6DVMfsdXx6fCzAmNjDzdU7tnKPhaCJmtmH9I26T9+y7zMhnN4YV4ADuReVuZvbrJtskAcCNbwbybKFa2hEnFP0lKEmohU/utXf5jHH7Y9h/wp23SnHcvnaglirJInR9kNg77HrSpYwfeDg+op7ZWX7fV852wYwQ43fBfoR+8Uff9NItENDUTe/1N/rAyNkYTrNJsibSZyEHmZD90g0JJUSFGfbHmG/c5vqWZ3XILcmqj6Kzz91QOsx8+ELPD+kZK+T4OzGrMt0MnkLY9ooKa7cIaRMez26vIZEwnUAIfiziK4b52alZwViSVJ8/uLWs4hF2kPaiHyuev38OXsizhACMdA2uQsUOgmpURZnsF4celRgzP5mAVP25HdyppnUOC1jArrpeWqTPRLgzYXM+KV2cDxkGvt12QwZe+/sKFJcgyoZ3LLqdipNHkEZchNScqTjpcEIsmrthOeVx3YVTEsc6gU3+5+Ew2YTNGDLGuZUgY=
+  skip_cleanup: true
+  run:
+  - rake db:migrate
+  app: norinku
+  on:
+    repo: elkhan/no_rinku
+notifications:
+  email: false
+  slack:
+    secure: qwvGa2zZmBtmPhHx1ymSoEUrPUVd+Cc8uMLNzqqTp/+0GyqdLHSw+xIUbw79FuTIsSycEg+f1ejK28aEtbn1HGyd4Pxgoli517hxI73tDtCGq74tCPMvofpFfPs9VBU2fbB9BUECG83jD3VIdUGmL6I3y5HZt3x1IuHPjWnmvM9WY/wuPxyuA0wP1DxWZNQY7s0dxUUUgJp3roy/imyYm0V0UodIOQ2FB6hBhhV5MqazfXgCOqo+p0g/1JSJOIDMeN7XTQa9fwm2QcdTXNTEQTNmaPhtKd8DkzuE2QtNmwc/Wvr0ydOhJx8TeNc+RvXw+xmU+1ApWDlRsVlb5A7sjhYSdW6f1GCpb5QqWNeJ8ZSgpQyWZdqA+TVJgYLWqpZkKyxmBT0DMKUn2GTLyYfjo/1ievkIh3rD0KrBfA02KwRw4N6vOxd3bQ8Ixh1wVxQ+ur08BT2nNZGWqzaP7cjvRS02Y5AQ8xtq4+LsSU0ZYnkIfwiRyQreSfO6iSwglLF46gc2rK2q1Q/cwUAVyRd15gNrXL06qkFLAInkKEJOWT9QnNwhoVsCSYu5VyL4HG6vfNDCa6wZvG0op8Ta0VFoHJk9pAc7bYWXOXnsSqO7y9foyIF4pTVh2NXhKtJ+1hA+feQ9mNB1T7EQ1blTh/wa2GQxAgojKftfeq9wmFSm0a4=
+after_success:
+- CODECLIMATE_REPO_TOKEN = bundle exec codeclimate-test-reporter
