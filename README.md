@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/elkhan/no_rinku/badges/gpa.svg)](https://codeclimate.com/github/elkhan/no_rinku) [![Test Coverage](https://codeclimate.com/github/elkhan/no_rinku/badges/coverage.svg)](https://codeclimate.com/github/elkhan/no_rinku/coverage) [![Issue Count](https://codeclimate.com/github/elkhan/no_rinku/badges/issue_count.svg)](https://codeclimate.com/github/elkhan/no_rinku)
+[![Build Status](https://travis-ci.org/elkhan/no_rinku.svg?branch=master)](https://travis-ci.org/elkhan/no_rinku) [![Code Climate](https://codeclimate.com/github/elkhan/no_rinku/badges/gpa.svg)](https://codeclimate.com/github/elkhan/no_rinku) [![Test Coverage](https://codeclimate.com/github/elkhan/no_rinku/badges/coverage.svg)](https://codeclimate.com/github/elkhan/no_rinku/coverage) [![Issue Count](https://codeclimate.com/github/elkhan/no_rinku/badges/issue_count.svg)](https://codeclimate.com/github/elkhan/no_rinku)
 
 # README
 
