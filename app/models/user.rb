@@ -1,6 +1,14 @@
 class User < ApplicationRecord
-
   after_initialize :assign_default_role
+  before_save { email.downcase! }
+
+  validates :username, presence: true, length: { maximum: 50, minimum: 4 },
+                       uniqueness: { case_sensitive: false },
+                       format: { with: /\A[a-zA-Z0-9_-]*(?:[a-zA-Z0-9])\z/ }
+  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
+
+  extend FriendlyId
+  friendly_id :username, use: :slugged
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -25,16 +33,8 @@ class User < ApplicationRecord
    end
   end
 
-  extend FriendlyId
-  friendly_id :username, use: :slugged
-
-  validates :username, presence: true, length: { maximum: 50, minimum: 4 },
-                       uniqueness: { case_sensitive: false },
-                       format: { with: /\A[a-zA-Z0-9_-]*(?:[a-zA-Z0-9])\z/ }
-  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-
   private
-  
+
     def assign_default_role
       self.role ||= :active
     end
