@@ -2,6 +2,8 @@
 
 # README
 
+[![Join the chat at https://gitter.im/no_rinku/Lobby](https://badges.gitter.im/no_rinku/Lobby.svg)](https://gitter.im/no_rinku/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Hi!
 
 This is a public repo for [no rinku](https://norinku.com/ "Norinku") web bookmarks storing kind of website.
